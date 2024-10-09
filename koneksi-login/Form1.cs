@@ -22,7 +22,7 @@ namespace koneksi_login
         private string alamat, query;
         public Form1()
         {
-            alamat = "server=localhost; database=db_poin_unklab; username=root; password=12345;";
+            alamat = "server=localhost; database=db_mahasiswa; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace koneksi_login
         {
             try
             {
-                query = string.Format("select * from tb_users where username = '{0}'", txtUsername.Text);
+                query = string.Format("select * from tb_mahasiswa where username = '{0}'", txtUsername.Text);
                 ds.Clear();
                 koneksi.Open();
                 perintah = new MySqlCommand(query, koneksi);
@@ -62,7 +62,7 @@ namespace koneksi_login
                         sandi = kolom["password"].ToString();
                         if (sandi == txtPassword.Text)
                         {
-                            Project_Main frmMain = new Project_Main();
+                            Form2 frmMain = new Form2();
                             frmMain.Show();
                         }
                         else
